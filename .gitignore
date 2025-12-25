@@ -1,0 +1,11 @@
+__pycache__/
+.vscode/
+.idea/
+*.db
+*.pyc
+.env
+*.zip
+data/users.db
+.streamlit/secrets.toml
+
+

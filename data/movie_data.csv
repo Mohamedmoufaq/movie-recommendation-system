@@ -1,0 +1,36 @@
+MovieName,Year,Genre,Rating,Votes,BoxOffice,PosterURL,PosterPath
+Leo,2023,Action,8.5,12000,250,https://en.wikipedia.org/wiki/File:Leo_(2023_Indian_film).jpg,posters/Leo.jpg
+Vikram,2022,Thriller,9,15000,300,https://en.wikipedia.org/wiki/File:Vikram_2022_poster.jpg,posters/Vikram.jpg
+Beast,2022,Comedy,6.5,8000,150,https://en.wikipedia.org/wiki/File:Beast_2022_Indian_poster.jpg,posters/beast.jpg
+Master,2019,Action,8,11000,200,https://en.wikipedia.org/wiki/File:Master_2021_poster.jpg,posters/Master.jpg
+Kaithi,2019,Thriller,9.2,16000,280,https://open.spotify.com/album/1tqASNXgy4GxBJdVnhWCFC,posters/Kaithi.jpg
+Kadhalan,1994,Romance,9.1,11000,110,https://en.wikipedia.org/wiki/File:Kaadhalan.jpg,posters/Kadhalan.jpg
+Minsara kanavu,1997,Romance/Action,8.8,20000,380,https://en.wikipedia.org/wiki/File:Minsara_Kanavu_poster.jpg,posters/Minsarakanavu.jpg
+Ponmanikavel,2021,Action/suspense,7.5,10000,300,https://en.wikipedia.org/wiki/File:Pon_Manickavel_film_poster.jpg,posters/ponmanikavel.jpg
+Anniyan,2005,Thriller,9.2,22000,400,https://upload.wikimedia.org/wikipedia/en/f/fa/Anniyan_Original_Motion_Picture_Soundtrack.jpg,posters/Anniyan.jpg
+Thunivu,2022,Action,6.6,9000,100,https://en.wikipedia.org/wiki/File:Thunivu_poster.jpg,posters/Thunivu.jpg
+Ayan,2010,Action/Twist,9.4,12000,420,https://en.wikipedia.org/wiki/File:Ayan_poster.jpg,posters/ayan.jpg
+Chennai express,2012,Adventure/Comedy,9,32000,700,https://en.wikipedia.org/wiki/File:Chennai_Express.jpg,posters/Chennaiexpress.jpg
+Happy_new_year,2010,Comedy/Crime,6.2,25000,600,https://en.wikipedia.org/wiki/File:Happy_New_Year_Poster_(2014_film).jpg,posters/Happy_new_year.jpg
+Aashiqui2,2012,Romance,8.5,14000,300,https://en.wikipedia.org/wiki/File:Aashiqui_2_(Poster).jpg,posters/Aashiqui2.jpg
+Bombay,1995,Romance,7.2,32000,400,https://en.wikipedia.org/wiki/File:Bombay_1995_poster.jpg,posters/Bombay.jpg
+3,2013,Romance,8.1,7000,95,https://en.wikipedia.org/wiki/3_%282012_Indian_film%29,posters/3.jpg
+Rab Ne Bane Di Jodi,2008,Romance,8.3,17000,125,https://en.wikipedia.org/wiki/File:Rab_Ne_Bana_Di_Jodi.jpg,posters/rab_ne_bana_di_jodi.jpg
+Thani Oruvan,2016,Action/suspense,9.7,45000,225,https://en.wikipedia.org/wiki/File:Thani_Oruvan.jpg,posters/Thanioruvan.jpg
+Jayam,2003,Romance/Action,6.2,8000,90,https://en.wikipedia.org/wiki/File:Jayam_(2003_film).jpg,posters/jayam.jpg
+Vada Chennai,2018,Thriller,7.7,19800,123,https://en.wikipedia.org/wiki/File:Vada_Chennai.jpg,posters/Vadachennai.jpg
+Kanjana 1,2010,Horror,6.7,13400,122,https://en.wikipedia.org/wiki/File:Kanchana_2011_poster.jpg,posters/Kanjana.jpg
+Vacation Friends,2021,Comedy,5.5,12000,122,,
+Lights Out,2016,Horror,6.2,13000,300,,
+Inception,2010,Thriller,6.5,14000,500,http://www.omdbapi.com/?t=Inception&apikey=9b1b25d8,
+The Conjuring,2013,Horror,8.0,21000,300,,
+The Dark Knight,2008,Action/Twist,8.5,30000,380,,
+The Terminator,1984,Action/Adventure,8.4,26000,330,,
+A Beautiful Mind,2001,Romance/Action,7.7,22000,220,,
+The Communion Girl,2022,Horror/Suspense,8.8,29000,180,,
+It,2017,Horror/Suspense,9.3,30000,200,,
+Freedom Writers,2007,Comedy/Crime,9.0,25000,230,,
+Seven Pounds,2008,Romance/Action,7.6,23000,300,,
+Million Dollar Baby,2004,Action/suspense,8.1,25000,350,,
+Life of Pi,2012,Action/Adventure,7.9,24500,200,,
+Leatherface,2017,Horror/Suspense,5.0,18000,150,,
