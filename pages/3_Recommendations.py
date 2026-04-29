@@ -6,7 +6,7 @@ from fuzzywuzzy import process
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 
-API_KEY = st.secrets["omdb_api"]
+API_KEY = os.getenv("omdb_api")
 
 
 @st.cache_data
