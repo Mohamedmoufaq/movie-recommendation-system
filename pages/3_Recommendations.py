@@ -132,6 +132,8 @@ else:
 
         ratings.to_csv(ratings_file, index=False)
         st.success("Rating saved!")
+        st.write("Latest Ratings:")
+        st.write(ratings.tail())
 
     if st.button("🎯 Recommend Based on Users"):
 
