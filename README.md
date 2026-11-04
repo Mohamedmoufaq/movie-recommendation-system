@@ -1,47 +1,56 @@
-# 🎬 Movie Recommendation & Analytics System
+# 🎬 Movie Mind – Intelligent Analytics & Recommendation System
 
-Streamlit app with login, a searchable movie table, an interactive Plotly analytics dashboard and
-content-based movie recommendations with posters. Data: **TMDB 5000 Movies** (Kaggle) + your own custom movies.
+An end-to-end Machine Learning & Business Intelligence web application built with **Python**, **Streamlit**, and **Scikit-learn**. The system features a Content-Based Recommendation Engine trained on the TMDB 5000 dataset, an Interactive Analytics Dashboard, and a Secure User Authentication framework with Email OTP Password Recovery.
 
-## Project structure
-```
-streamlit_app.py            Login / Register + home page
-pages/1_Movie_Data.py       Search, filter, sort, download the movie table
-pages/2_Analytics.py        Plotly dashboard (KPI cards, filters, 15+ charts)
-pages/3_Recommendations.py  Similar movies (content-based) + user-based recommendations
-utils/                      Reusable code: data_loader, recommender, posters, ratings, ui, auth
-scripts/                    prepare_data.py, fetch_poster_paths.py, check_recommendations.py
-data/movies_clean.csv       Cleaned TMDB data (created by scripts/prepare_data.py)
-data/movie_data.csv         YOUR hand-made movies (kept as "Custom" movies)
-data/user_movie_ratings.csv Ratings given by users
-posters/                    Local posters of your custom movies
-```
+---
 
-## Run
-```
-pip install -r requirements.txt
-streamlit run streamlit_app.py
-```
+## 🌟 Key Features
 
-## Posters (one-time setup)
-The Kaggle dataset has **no poster column**, so posters come from the official TMDB API using each movie's
-exact TMDB `id` (so a poster can never belong to a different movie).
-1. Free key: themoviedb.org -> Settings -> API.
-2. Copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml` and paste the key. (Never commit this file.)
-3. Optional but recommended – download all poster paths once (about 5 minutes):
-   `python scripts/fetch_poster_paths.py`  (creates `data/poster_paths.csv`, commit that file).
-Without a key the app still works; movies without a poster show a clean "No poster available" card.
+- **🎬 Content-Based Recommendation Engine:** Uses TF-IDF Vectorization and Cosine Similarity to recommend similar movies based on genres, cast, crew, keywords, and storyline.
+- **🖼️ Real-Time Poster Fetching:** Dynamically fetches high-resolution movie posters directly from the official TMDB API.
+- **📊 Interactive Data Analytics:** Built with **Plotly** to explore ratings, box-office revenue trends, budget analysis, genres distribution, and release timeline metrics.
+- **🔐 Secure Authentication System:** 
+  - Password hashing via `Werkzeug` (scrypt).
+  - SQLite database for persistent user accounts.
+  - **Email OTP Password Reset:** Automated 6-digit OTP delivery using Python `smtplib` and Gmail SMTP integration.
+- **📁 Custom Movie Support:** Seamlessly integrates local user-added movies alongside the global TMDB dataset.
 
-## Rebuild the clean data (only if needed)
-Put `tmdb_5000_movies.csv` and `tmdb_5000_credits.csv` into `data/raw/`, then `python scripts/prepare_data.py`.
+---
 
-## Check the recommender from the terminal
-`python scripts/check_recommendations.py "The Dark Knight" "Toy Story"`
+## 🛠️ Tech Stack & Libraries
 
-## How recommendations work
-Each movie = genres (30%) + keywords (25%) + story (25%) + director/cast (20%). TF-IDF turns each part into
-numbers, cosine similarity compares movies. A recommendation must share a genre with the selected movie; the
-selected movie and duplicates are removed. Ratings/votes never decide similarity (they only break exact ties).
+- **Language:** Python 3.11
+- **Frontend / Framework:** Streamlit
+- **Data Processing:** Pandas, NumPy
+- **Machine Learning & NLP:** Scikit-learn (TF-IDF, Cosine Similarity)
+- **Data Visualization:** Plotly
+- **Database:** SQLite3
+- **Security & Mail:** Werkzeug, smtplib, email.mime
+- **API Integration:** TMDB API (The Movie Database)
 
-## Security
-API keys live only in `.streamlit/secrets.toml` or environment variables. `users.db` and secrets are git-ignored.
+---
+
+## 📁 Project Structure
+
+```text
+mrs/
+│── .streamlit/
+│   ├── config.toml           # UI Theme Configurations
+│   └── secrets.toml.example  # Template for Secrets & API Keys
+│── data/
+│   ├── movies_clean.csv      # Processed TMDB 5000 dataset
+│   ├── movie_data.csv        # Custom handcrafted movies dataset
+│   └── users.db              # SQLite Database (Git Ignored)
+│── pages/
+│   ├── 1_Movie_Data.py       # Dataset Explorer, Filters, and Table Download
+│   ├── 2_Analytics.py        # Plotly Interactive BI Dashboard
+│   └── 3_Recommendations.py  # Movie Recommendation Interface with Posters
+│── scripts/                  # Data preparation & posters caching scripts
+│── utils/
+│   ├── auth.py               # User Login, Registration, and Email OTP Logic
+│   ├── data_loader.py        # Optimized CSV Data Loading
+│   ├── recommender.py       # Machine Learning Recommendation Engine
+│   └── ui.py                 # Custom Styling & CSS Injections
+│── requirements.txt          # Project Dependencies
+│── streamlit_app.py          # Main Entrance & Auth Router
+└── README.md                 # Project Documentation
