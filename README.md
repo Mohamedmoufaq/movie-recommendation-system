@@ -54,3 +54,43 @@ mrs/
 │── requirements.txt          # Project Dependencies
 │── streamlit_app.py          # Main Entrance & Auth Router
 └── README.md                 # Project Documentation
+
+🚀 Local Installation & Setup
+Clone the Repository:
+
+Bash
+git clone [https://github.com/Mohamedmoufaq/movie-recommendation-system.git](https://github.com/Mohamedmoufaq/movie-recommendation-system.git)
+cd movie-recommendation-system
+Set Up Virtual Environment:
+
+Bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+Install Dependencies:
+
+Bash
+pip install -r requirements.txt
+Configure Secrets & API Keys:
+Create a .streamlit/secrets.toml file inside the .streamlit/ directory:
+
+Ini, TOML
+TMDB_API_KEY = "YOUR_TMDB_API_KEY"
+EMAIL_SENDER = "your_email@gmail.com"
+EMAIL_PASSWORD = "your_16_digit_app_password"
+Run the Application:
+
+Bash
+streamlit run streamlit_app.py
+🛡️ Security & Privacy
+API Keys & Credentials: Strictly stored in .streamlit/secrets.toml and managed via Render Environment Variables. Excluded from version control via .gitignore.
+
+Database Security: User passwords are never stored in plain text; all entries are protected via scrypt hashing.
+
+👤 Author
+Mohamed Moufaq S
+
+💼 LinkedIn: Mohamed Moufaq
+
+💻 GitHub: @Mohamedmoufaq
+
+🌐 Portfolio: mohamedmoufaq.github.io/Portfolio
