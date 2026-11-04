@@ -77,6 +77,7 @@ Ini, TOML
 TMDB_API_KEY = "YOUR_TMDB_API_KEY"
 EMAIL_SENDER = "your_email@gmail.com"
 EMAIL_PASSWORD = "your_16_digit_app_password"
+
 Run the Application:
 
 Bash
@@ -89,8 +90,9 @@ Database Security: User passwords are never stored in plain text; all entries ar
 👤 Author
 Mohamed Moufaq S
 
-💼 LinkedIn: Mohamed Moufaq
+💼 LinkedIn: www.linkedin.com/in/
+mohamed-moufaq147
 
-💻 GitHub: @Mohamedmoufaq
+💻 GitHub:https://github.com/Mohamedmoufaq
 
 🌐 Portfolio: mohamedmoufaq.github.io/Portfolio
