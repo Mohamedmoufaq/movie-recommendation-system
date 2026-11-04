@@ -113,13 +113,14 @@ Movie Dashboard Team
 """
     message.attach(MIMEText(body, "plain"))
 
-    try:
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
-        server.login(sender_email, sender_password)
-        server.send_message(message)
-        server.quit()
-        return True
-    except Exception as exc:
-        st.error(f"❌ Failed to send email: {exc}")
-        return False
+
+try:
+    # Port 587-kku badhila Direct SSL Port 465 use pannugirom (Render network issue fix)
+    server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+    server.login(sender_email, sender_password)
+    server.send_message(message)
+    server.quit()
+    return True
+except Exception as exc:
+    st.error(f"❌ Failed to send email: {exc}")
+    return False
