@@ -1,3 +1,4 @@
+import os
 import random
 import sqlite3
 from email.mime.multipart import MIMEMultipart
@@ -5,6 +6,7 @@ from email.mime.text import MIMEText
 import smtplib
 from pathlib import Path
 
+import pandas as pd
 import streamlit as st
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -127,11 +129,11 @@ def update_password(username, new_password):
 
 
 def send_otp_email(receiver_email, otp_code):
-    sender_email = st.secrets.get("EMAIL_SENDER")
-    sender_password = st.secrets.get("EMAIL_PASSWORD")
+    sender_email = os.environ.get("EMAIL_SENDER") or st.secrets.get("EMAIL_SENDER")
+    sender_password = os.environ.get("EMAIL_PASSWORD") or st.secrets.get("EMAIL_PASSWORD")
 
     if not sender_email or not sender_password:
-        st.error("❌ Email credentials missing in .streamlit/secrets.toml!")
+        st.error("❌ Email credentials missing in Environment Variables / secrets!")
         return False
 
     message = MIMEMultipart()
@@ -277,3 +279,26 @@ st.write("""
 - ⭐ **Recommendations** – pick a movie and get genuinely similar movies (with posters)
 - 🔍 Rate movies after login to get recommendations from users with a similar taste
 """)
+
+# ===============================
+# 🔑 SECRET ADMIN VIEW (mohamedmoufaq147@gmail.com ONLY)
+# ===============================
+if st.session_state.get("logged_in"):
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        curr_user = st.session_state.get("username")
+        user_email_row = conn.execute("SELECT email FROM users WHERE username = ?", (curr_user,)).fetchone()
+        conn.close()
+
+        user_email = user_email_row[0].strip().lower() if user_email_row and user_email_row[0] else ""
+
+        # `mohamedmoufaq147@gmail.com` மின்னஞ்சலில் லாக் இன் செய்தால் மட்டுமே இது தோன்றும்
+        if user_email == "mohamedmoufaq147@gmail.com":
+            st.markdown("---")
+            with st.expander("🔑 Secret Admin View: Registered Users Database"):
+                conn = sqlite3.connect(DB_PATH)
+                users_df = pd.read_sql_query("SELECT id, username, email, password FROM users", conn)
+                conn.close()
+                st.dataframe(users_df, use_container_width=True)
+    except Exception as exc:
+        pass

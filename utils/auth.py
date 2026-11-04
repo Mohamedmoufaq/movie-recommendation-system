@@ -1,13 +1,14 @@
 """Login helpers shared by all pages."""
+import os
+import random
 import sqlite3
 import smtplib
-import random
-from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from pathlib import Path
 
 import streamlit as st
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 ROOT = Path(__file__).resolve().parent.parent
 DB_FILE = ROOT / "data" / "users.db"
@@ -86,11 +87,12 @@ def update_password(username: str, new_password: str) -> bool:
 
 
 def send_otp_email(receiver_email: str, otp_code: str) -> bool:
-    sender_email = st.secrets.get("EMAIL_SENDER")
-    sender_password = st.secrets.get("EMAIL_PASSWORD")
+    # Render environment variables (os.environ) first, fallback to st.secrets
+    sender_email = os.environ.get("EMAIL_SENDER") or st.secrets.get("EMAIL_SENDER")
+    sender_password = os.environ.get("EMAIL_PASSWORD") or st.secrets.get("EMAIL_PASSWORD")
 
     if not sender_email or not sender_password:
-        st.error("❌ Email credentials missing in .streamlit/secrets.toml!")
+        st.error("❌ Email credentials missing! Please configure EMAIL_SENDER and EMAIL_PASSWORD.")
         return False
 
     message = MIMEMultipart()
@@ -100,11 +102,11 @@ def send_otp_email(receiver_email: str, otp_code: str) -> bool:
 
     body = f"""Hello!
 
-Your One-Time Password (OTP) code to reset your Movie Dashboard account password is:
+Your OTP code to reset your Movie Dashboard account password is:
 
 🔑 OTP Code: {otp_code}
 
-This code is valid for this session only. Do not share it with anyone.
+This code is valid for this session only.
 
 Best regards,
 Movie Dashboard Team
