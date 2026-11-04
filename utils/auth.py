@@ -3,12 +3,12 @@ import os
 import random
 import sqlite3
 import smtplib
-from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from pathlib import Path
 
 import streamlit as st
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 ROOT = Path(__file__).resolve().parent.parent
 DB_FILE = ROOT / "data" / "users.db"
@@ -87,7 +87,6 @@ def update_password(username: str, new_password: str) -> bool:
 
 
 def send_otp_email(receiver_email: str, otp_code: str) -> bool:
-    # Render environment variables (os.environ) first, fallback to st.secrets
     sender_email = os.environ.get("EMAIL_SENDER") or st.secrets.get("EMAIL_SENDER")
     sender_password = os.environ.get("EMAIL_PASSWORD") or st.secrets.get("EMAIL_PASSWORD")
 
@@ -113,14 +112,13 @@ Movie Dashboard Team
 """
     message.attach(MIMEText(body, "plain"))
 
-
-try:
-    # Port 587-kku badhila Direct SSL Port 465 use pannugirom (Render network issue fix)
-    server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-    server.login(sender_email, sender_password)
-    server.send_message(message)
-    server.quit()
-    return True
-except Exception as exc:
-    st.error(f"❌ Failed to send email: {exc}")
-    return False
+    try:
+        # SMTP_SSL Port 465 (Network Unreachable பிழையைத் தவிர்க்க)
+        server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+        server.login(sender_email, sender_password)
+        server.send_message(message)
+        server.quit()
+        return True
+    except Exception as exc:
+        st.error(f"❌ Failed to send email: {exc}")
+        return False
