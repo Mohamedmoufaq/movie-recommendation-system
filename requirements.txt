@@ -1,0 +1,10 @@
+streamlit>=1.40
+pandas>=2.0
+numpy
+scikit-learn
+scipy
+plotly>=5.18
+requests
+xlsxwriter
+Pillow>=10
+Werkzeug

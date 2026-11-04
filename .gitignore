@@ -1,0 +1,14 @@
+# secrets & private data
+.streamlit/secrets.toml
+data/users.db
+data/poster_cache.json
+data/raw/
+
+# python / IDE
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+*.zip
